@@ -10,6 +10,11 @@
     font-size:24px;
 }
 
+.number-container{
+    padding-left:0px;
+  
+}
+
 .key-btn-container{
     padding:0px;
     padding:5px;
@@ -17,4 +22,14 @@
 
 .keypad-container{
     margin-top:10px;
+}
+
+.no-left-padding{
+    padding-left:0px;
+}
+
+.operation-container{
+    text-align:right;
+    padding-right:0px;
+    border-left:solid 1px #eaeaea;
 }
