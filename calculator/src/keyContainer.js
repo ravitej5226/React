@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
+import './keyContainer.css';
 
-function KeyContainer(props){
-    let keys=['%','sqrt','^2','1/x']
-    return keys.map((x)=><div className="col-md-3"><button className="btn btn-info">{x}</button></div>);
+function KeyContainer(props) {
+    let keys = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.']
+    return (
+        <div className="container">
+            <div className="row number-container col-md-8">
+
+
+                {keys.map((x) => <div className="col-lg-4 key-btn-container"><button className="btn btn-info key-number">{x}</button></div>)}
+            </div>
+
+            <div class="row operation-container">
+
+            </div>
+        </div>
+    );
 }
 
 export default KeyContainer;

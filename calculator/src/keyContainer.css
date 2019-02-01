@@ -1,0 +1,16 @@
+.key-number{
+    width:100%;
+    padding:0px;
+    padding:10px 0px;
+
+    background-color:#c9c9c9;
+    border-radius:0px;
+    border-color:#c9c9c9;
+    color:#000;
+    font-size:24px;
+}
+
+.key-btn-container{
+    padding:0px;
+    padding:5px;
+}
