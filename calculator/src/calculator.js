@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './calculator.css';
 import './bootstrap.min.css';
+import Result from './Result';
+import KeyContainter from './keyContainer';
 
 class Calculator extends Component {
   render() {
@@ -15,7 +17,8 @@ class Calculator extends Component {
           
           </div>
           <div class="calculator-body">
-          
+          <Result sum="4"/>
+          <KeyContainter />
 
           </div>
         </div>
