@@ -42,7 +42,7 @@
 .calculator-body{
   border:solid 2px #666;
   padding:10px;
-  width:600px;
+  max-width:600px;
   margin:0px auto;
 }
 
