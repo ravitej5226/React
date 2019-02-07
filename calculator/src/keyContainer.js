@@ -8,30 +8,30 @@ function KeyContainer(props) {
     let operations=['/','DEL','x','','-','','+','=']
     return (
         <div className="keypad-container clear">
-            <div className="number-container col-md-8">
+            <div className="number-container col-md-8 col-sm-8 col-xs-8">
                 {
                     keys.map(function (x, i) {
                         let paddingClass='';
                     if (i % 3 == 0) {
                         paddingClass='no-left-padding';
                     }                    
-                   return  <div className={"col-lg-4 key-btn-container "+paddingClass}><button onClick={props.onNumberClick(x)}  className="btn btn-info key-number">{x}</button></div>
+                   return  <div className={"col-lg-4 col-md-4 col-sm-4 col-xs-4 key-btn-container "+paddingClass}><button onClick={props.onNumberClick(x)}  className="btn btn-info key-number">{x}</button></div>
                 })
             }
             </div>
 
-            <div class="operation-container col-md-4">
+            <div class="operation-container col-md-4 col-sm-4 col-xs-4">
                 {operations.map(function(x,i){
                     if(x=='DEL')
                     {
-                        return <div className={"col-lg-6 key-btn-container "}><button onClick={props.onOperationClick} disabled className="btn btn-info key-number">{x}</button></div>
+                        return <div className={"col-lg-6 col-md-6 col-sm-6 col-xs-6 key-btn-container "}><button onClick={props.onOperationClick} disabled className="btn btn-info key-number">{x}</button></div>
                     }
                    else if(x!=''){
-                   return <div className={"col-lg-6 key-btn-container "}><button onClick={props.onOperationClick} className="btn btn-info key-number">{x}</button></div>
+                   return <div className={"col-lg-6 col-md-6 col-sm-6 col-xs-6 key-btn-container "}><button onClick={props.onOperationClick} className="btn btn-info key-number">{x}</button></div>
                     }
                      
                     else{
-                        return <div className={"col-lg-6 key-btn-container "} style={{height:'66px'}}></div>
+                        return <div className={"col-lg-6 col-md-6 col-sm-6 key-btn-container "} style={{height:'66px'}}></div>
                     }
                 })
             }
