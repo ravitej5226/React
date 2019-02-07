@@ -5,20 +5,16 @@ import './bootstrap.min.css';
 import Result from './Result';
 import KeyContainter from './keyContainer';
 import compute from './helper';
+import { connect } from 'react-redux';
 
 class Calculator extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      display: 0,
-      result: null,
-      currentOp:'',
-      currentNum:0
-    }
+    this.state = this.props.state
 
     this.onOperationClick = this.onOperationClick.bind(this);
-    this.onNumberClick = this.onNumberClick.bind(this);
+   // this.onNumberClick = this.onNumberClick.bind(this);
   }
   onOperationClick(args) {
    // Load the current op
@@ -57,19 +53,19 @@ class Calculator extends Component {
   }
 
 
-  onNumberClick(args) {
-    // Load the current number
-    let currentNumber=args.target.textContent;
+  // onNumberClick(args) {
+  //   // Load the current number
+  //   let currentNumber=args.target.textContent;
 
-    if(this.state.currentNum!==0){
-      currentNumber=this.state.currentNum+currentNumber;
-    }
+  //   if(this.state.currentNum!==0){
+  //     currentNumber=this.state.currentNum+currentNumber;
+  //   }
 
-    this.setState({
-      currentNum:parseFloat(currentNumber),
-      display:parseFloat(currentNumber)
-    })
-  }
+  //   this.setState({
+  //     currentNum:parseFloat(currentNumber),
+  //     display:parseFloat(currentNumber)
+  //   })
+  // }
 
   render() {
     return (
@@ -92,4 +88,17 @@ class Calculator extends Component {
   }
 }
 
-export default Calculator;
+
+function mapStateToProps(state){
+  return state;
+}
+
+function mapDispatchToProps(dispatch){
+return {
+  onNumberClick:(number)=>{
+    dispatch({type:'NUMBER_SELECTED',number});
+  }
+}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Calculator);

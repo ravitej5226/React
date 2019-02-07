@@ -15,7 +15,7 @@ function KeyContainer(props) {
                     if (i % 3 == 0) {
                         paddingClass='no-left-padding';
                     }                    
-                   return  <div className={"col-lg-4 key-btn-container "+paddingClass}><button onClick={props.onNumberClick}  className="btn btn-info key-number">{x}</button></div>
+                   return  <div className={"col-lg-4 key-btn-container "+paddingClass}><button onClick={props.onNumberClick(x)}  className="btn btn-info key-number">{x}</button></div>
                 })
             }
             </div>
