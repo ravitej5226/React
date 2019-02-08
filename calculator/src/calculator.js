@@ -7,49 +7,56 @@ import KeyContainter from './keyContainer';
 import compute from './helper';
 import { connect } from 'react-redux';
 
+let state = {
+  display: 0,
+  result: null,
+  currentOp: '',
+  currentNum: 0
+}
+
+
 class Calculator extends Component {
   constructor(props) {
     super(props);
 
-    this.state = this.props.state
 
     this.onOperationClick = this.onOperationClick.bind(this);
-   // this.onNumberClick = this.onNumberClick.bind(this);
+    // this.onNumberClick = this.onNumberClick.bind(this);
   }
   onOperationClick(args) {
-   // Load the current op
-   let operation=args.target.textContent;
+    // Load the current op
+    let operation = args.target.textContent;
 
-   if(this.state.result===null){
-    this.setState({
-      result:this.state.currentNum,
-      currentOp:operation,
-      currentNum:0
-    })
-   }  
-   else if(operation==="="){
-    let newResult=compute(this.state.result,this.state.currentNum,this.state.currentOp);
+    if (this.state.result === null) {
+      this.setState({
+        result: this.state.currentNum,
+        currentOp: operation,
+        currentNum: 0
+      })
+    }
+    else if (operation === "=") {
+      let newResult = compute(this.state.result, this.state.currentNum, this.state.currentOp);
 
-    this.setState({
-      result:null,
-      currentOp:'',
-      currentNum:0,
-      display:newResult
-    })
-   }
-   else if(operation==="DEL"){
-     console.log("DEL not handled yet!")
-   }
-   else{
-     let newResult=compute(this.state.result,this.state.currentNum,this.state.currentOp);
-     
-     this.setState({
-       result:newResult,
-       currentOp:operation,
-       currentNum:0,
-       display:newResult
-     })
-   }
+      this.setState({
+        result: null,
+        currentOp: '',
+        currentNum: 0,
+        display: newResult
+      })
+    }
+    else if (operation === "DEL") {
+      console.log("DEL not handled yet!")
+    }
+    else {
+      let newResult = compute(this.state.result, this.state.currentNum, this.state.currentOp);
+
+      this.setState({
+        result: newResult,
+        currentOp: operation,
+        currentNum: 0,
+        display: newResult
+      })
+    }
   }
 
 
@@ -69,17 +76,17 @@ class Calculator extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="main">
-          <div class="jumbotron">
-            <h1 class="display-4">
+      <div className="container">
+        <div className="main">
+          <div className="jumbotron">
+            <h1 className="display-4">
               A simple calculator
           </h1>
 
           </div>
-          <div class="calculator-body clearfix">
-            <Result sum={this.state.display} />
-            <KeyContainter onOperationClick={this.onOperationClick} onNumberClick={this.onNumberClick} />
+          <div className="calculator-body clearfix">
+            <Result sum={this.props.display} />
+            <KeyContainter onOperationClick={this.onOperationClick} onNumberClick={this.props.onNumberClick} />
 
           </div>
         </div>
@@ -89,16 +96,24 @@ class Calculator extends Component {
 }
 
 
-function mapStateToProps(state){
-  return state;
+function mapStateToProps(state) {
+  return {
+    display: state,
+    result: state,
+    currentOp: state,
+    currentNum: state
+  };
 }
 
-function mapDispatchToProps(dispatch){
-return {
-  onNumberClick:(number)=>{
-    dispatch({type:'NUMBER_SELECTED',number});
+function mapDispatchToProps(dispatch) {
+  return {
+    onNumberClick: (number) => {
+      dispatch({ type: 'NUMBER_SELECTED', number });
+    }
   }
 }
-}
 
-export default connect(mapStateToProps,mapDispatchToProps)(Calculator);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  function ({display}) {
+    return (<Calculator />)
+  });

@@ -4,7 +4,7 @@ import "./result.css"
 class Result extends Component {
     render() {
         return (
-            <div class="result-container">
+            <div className="result-container">
                 {this.props.sum}
             </div>
         );
