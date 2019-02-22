@@ -7,19 +7,19 @@ import KeyContainter from './keyContainer';
 import compute from './helper';
 import { connect } from 'react-redux';
 
-let state = {
-  display: 0,
-  result: null,
-  currentOp: '',
-  currentNum: 0
-}
-
+ 
 
 class Calculator extends Component {
   constructor(props) {
     super(props);
-
-
+    let state = {
+      display: 0,
+      result: null,
+      currentOp: '',
+      currentNum: 0
+    }
+    
+this.state=props;
     this.onOperationClick = this.onOperationClick.bind(this);
     // this.onNumberClick = this.onNumberClick.bind(this);
   }
@@ -97,12 +97,12 @@ class Calculator extends Component {
 
 
 function mapStateToProps(state) {
-  return {
-    display: state,
-    result: state,
-    currentOp: state,
-    currentNum: state
-  };
+return {
+  display: state.display,
+  result: null,
+  currentOp: '',
+  currentNum: 0
+};
 }
 
 function mapDispatchToProps(dispatch) {
@@ -113,7 +113,11 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  function ({display}) {
-    return (<Calculator />)
-  });
+// export default connect(mapStateToProps, mapDispatchToProps)(
+//   function(props){
+//     return (<Calculator />)
+//   }
+// );
+  
+    
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator)

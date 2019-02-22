@@ -7,13 +7,13 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-
-let reducer = function (state={
+const state1={
     display: 0,
     result: null,
     currentOp:'',
     currentNum:0
-  }, action) {
+  };
+let reducer = function (state=state1, action) {
     switch (action.type) {
         case 'NUMBER_SELECTED':
             let currentNumber = action.number;
@@ -26,10 +26,12 @@ let reducer = function (state={
                 currentNum: parseFloat(currentNumber),
                 display: parseFloat(currentNumber)
             })
+        default:
+        return state;
     }
 }
 
-let store = Redux.createStore(reducer,
+let store = Redux.createStore(reducer,state1,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
